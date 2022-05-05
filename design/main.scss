@@ -1,0 +1,376 @@
+// global rules
+@import "./sass/layout/global-rules";
+
+// pages
+@import "./sass/pages/contact";
+
+// helpers
+@import "./sass/helpers/mixing";
+
+// varibalis
+@import "./sass/varibials/colors";
+$alt_color: green;
+// medias
+$max_mobile: "max-width: 767px";
+$small_screen: "min-width: 768px";
+$medium_screen: "min-width: 992px";
+$large_screen: "min-width: 1200px";
+
+.header {
+  color: $alt_color;
+}
+.footer {
+  $alt_color: black !global;
+  color: $alt_color;
+}
+.copyright {
+  color: $alt_color;
+}
+.sidebar {
+  background-color: $main;
+  color: $alt;
+}
+@media ($medium_screen) {
+  .sidebar {
+    padding: 20px;
+  }
+}
+.parent {
+  font-weight: bold;
+  .child {
+    font-size: 20px;
+    .grand-child {
+      font-size: 15px;
+    }
+  }
+}
+.parent-three {
+  > .child {
+    background-color: $main;
+  }
+  .test {
+    border: 2px solid;
+  }
+  + p {
+    padding: 5px;
+  }
+}
+.parent-three + {
+  .child {
+    background-color: $main;
+  }
+  .test {
+    border: 2px solid;
+  }
+  p {
+    padding: 5px;
+  }
+}
+.parent-one,
+.parent-two {
+  padding: 40px;
+  .child {
+    padding: 10px;
+  }
+}
+.parent {
+  > {
+    .child {
+      font-size: 10px;
+    }
+    .test {
+      position: relative;
+    }
+  }
+}
+.box {
+  .title {
+    font-size: 20px;
+  }
+  .description {
+    color: $alt;
+  }
+  &.shahid {
+    .title {
+      color: $main;
+    }
+  }
+  &.red {
+    .title {
+      font-weight: bold;
+    }
+    &.green {
+      background-color: red;
+    }
+  }
+  &:hover {
+    background-color: #e069e0;
+    .title {
+      font-weight: bold;
+    }
+  }
+  &::before {
+    content: "";
+    color: red;
+    &:hover {
+      color: greenyellow;
+      .box {
+        > {
+          .title {
+            color: #e60978;
+          }
+          .description {
+            color: #777;
+          }
+        }
+      }
+    }
+  }
+  :not(&) {
+    padding: 15px;
+    // @extend %main-box;
+  }
+  [dir="rtl"] & {
+    direction: rtl;
+    font: {
+      size: 20px;
+      family: "Open Sans";
+      weight: bold;
+    }
+    padding: {
+      top: 10px;
+      left: 15px;
+    }
+    padding: 40px;
+    margin: auto {
+      top: 10px;
+      bottom: 15px;
+    }
+    @extend %main-box;
+    border-color: #e87917;
+  }
+}
+%main-box {
+  background-color: #fff;
+  border: 2px solid #e60978;
+  padding: 40px;
+  text-transform: capitalize;
+  font-size: 20px;
+  border-radius: 6px;
+}
+$theme: "dark";
+.page {
+  @if $theme == "light" {
+    background-color: white;
+    color: #444;
+  } @else {
+    background-color: #444;
+    color: white;
+  }
+}
+$rounded: false;
+.box {
+  font-size: 40px;
+  border-radius: if($rounded, 6px, null);
+}
+$direction: "bottom";
+.arrow-up {
+  @extend %main-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  position: relative;
+  margin: 50px auto;
+  &::before {
+    content: "";
+    position: absolute;
+    border: 20px solid transparent;
+    @if $direction == "top" {
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-bottom-color: #009688;
+    } @else if $direction == "right" {
+      right: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-left-color: #009688;
+    } @else if $direction == "left" {
+      left: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-right-color: #009688;
+    } @else if $direction == "bottom" {
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-top-color: #009688;
+    } @else {
+      @error 'this direction #{direction} is not valid';
+    }
+  }
+}
+$company: "falcon";
+$position: "right";
+.ad-#{$company}-#{unique-id()} {
+  font-size: 40px;
+  background-image: url("imgs/#{$company}.png");
+  #{$position}: 0;
+}
+.ad-#{unique-id()} {
+  font-weight: bold;
+}
+.center-circle-100 {
+  @include centering(100);
+}
+.d-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+$sizeCircle: 0;
+@for $i from 1 through 10 {
+  .circle-#{50 + $sizeCircle} {
+    @include circle(50 + $sizeCircle);
+  }
+  $sizeCircle: $sizeCircle + 50;
+}
+$grid_cols: 12;
+@for $i from 1 through $grid_cols {
+  .col-#{$i} {
+    width: percentage($i / $grid_cols);
+  }
+}
+.box {
+  @include overlay(#e9c417, 0.5);
+}
+@include addprefix(fliped);
+$red: #e83333;
+$orange: #e94d00;
+$success: #47e489;
+$themes: (
+  "red": $red,
+  "orange": $orange,
+  "success": $success,
+  "blue": #1873e5,
+  "dark": #222222,
+);
+@font-face {
+  font-family: "Cairo";
+  src: url(../pageFonts/Cairo/Cairo-VariableFont_wght.ttf) format("woff2");
+}
+@each $name, $color in $themes {
+  .#{$name}-product {
+    font-family: "Cairo";
+    background-color: $color;
+    color: white;
+    .title {
+      font-weight: bold;
+      background-color: $color + 50;
+      text-transform: capitalize;
+      font-size: 35px;
+      color: $color + 150;
+      text-align: center;
+    }
+    border: 3px solid $color + 50;
+    border-radius: 6px;
+  }
+}
+$start: 1;
+@while $start <= 10 {
+  .size-#{$start} {
+    width: $start * 50px;
+    height: ($start * 50px) / 2;
+  }
+  $start: $start + 1;
+}
+@include addprefix(go-up) {
+  from {
+    background-color: #009688;
+  }
+  to {
+    background-color: #e60978;
+  }
+}
+@include addprefix(go-down) {
+  from {
+    background-color: #1873e5;
+  }
+  to {
+    background-color: #e94d00;
+  }
+}
+@include breakpoints(large) {
+  .box {
+    width: 10px;
+  }
+}
+.red {
+  @include gradiant(45, #e94d00 40%, #de1e9a 10%);
+}
+.blue {
+  position: relative;
+  background-color: white;
+  border-radius: 6px;
+}
+.blue::before {
+  content: "";
+  position: absolute;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  border-radius: 6px;
+  @include gradiant(
+    0,
+    #1873e5 percentage(1 / 6),
+    #ff2600 percentage(1 / 6),
+    #ff2600 percentage(2 / 6),
+    #e99700 percentage(2 / 6),
+    #e99700 percentage(3 / 6),
+    #1873e5 percentage(3 / 6),
+    #1873e5 percentage(4 / 6),
+    #33a447 percentage(4 / 6),
+    #33a447 percentage(5 / 6),
+    #ff2600 percentage(5 / 6),
+    #ff2600 percentage(6 / 6)
+  );
+  animation: rotate-colors 3s linear infinite;
+}
+@keyframes rotate-colors {
+  0% {
+    background: linear-gradient(
+      0deg,
+      #1873e5 percentage(1 / 6),
+      #ff2600 percentage(1 / 6),
+      #ff2600 percentage(2 / 6),
+      #e99700 percentage(2 / 6),
+      #e99700 percentage(3 / 6),
+      #1873e5 percentage(3 / 6),
+      #1873e5 percentage(4 / 6),
+      #33a447 percentage(4 / 6),
+      #33a447 percentage(5 / 6),
+      #ff2600 percentage(5 / 6),
+      #ff2600 percentage(6 / 6)
+    );
+  }
+  100% {
+    background: linear-gradient(
+      360deg,
+      #1873e5 percentage(1 / 6),
+      #ff2600 percentage(1 / 6),
+      #ff2600 percentage(2 / 6),
+      #e99700 percentage(2 / 6),
+      #e99700 percentage(3 / 6),
+      #1873e5 percentage(3 / 6),
+      #1873e5 percentage(4 / 6),
+      #33a447 percentage(4 / 6),
+      #33a447 percentage(5 / 6),
+      #ff2600 percentage(5 / 6),
+      #ff2600 percentage(6 / 6)
+    );
+  }
+}

@@ -1,0 +1,64 @@
+@mixin circle($size) {
+  border-radius: 50%;
+  width: $size + px;
+  height: $size + px;
+}
+@mixin centering($size) {
+  @include circle($size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin col($col_num) {
+  grid-column: $col_num span;
+}
+@mixin addprefix($element_name) {
+  @-webkit-keyframes #{$element_name} {
+    @content;
+  }
+  @-moz-keyframes #{$element_name} {
+    @content;
+  }
+  @-ms-keyframes #{$element_name} {
+    @content;
+  }
+  @-o-keyframes #{$element_name} {
+    @content;
+  }
+  @keyframes #{$element_name} {
+    @content;
+  }
+}
+@mixin overlay($color, $opacity) {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba($color, $opacity);
+}
+@mixin breakpoints($point) {
+  @if $point == mobile {
+    @media (max-width: 767px) {
+      @content;
+    }
+  } @else if $point == small {
+    @media (min-width: 768px) and (max-width: 991px) {
+      @content;
+    }
+  } @else if $point == medium {
+    @media (min-width: 992px) and (max-width: 1199px) {
+      @content;
+    }
+  } @else if $point == large {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+}
+@mixin gradiant($digry, $colors...) {
+  background: linear-gradient($digry + deg, $colors);
+}
+@mixin gradiant_of_self($digry, $color) {
+  background: linear-gradient($digry + deg, $color, $color + 100);
+}
