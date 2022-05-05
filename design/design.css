@@ -1844,7 +1844,7 @@ header .main-nav > li .maga-menu .links li:hover {
 }
 
 .pricing .container .box ul li::before {
-  font-family: "Font Awesome 6 Free";
+  font-family: "Font Awesome 6 Pro";
   content: "\f00c";
   font-weight: 900;
   color: #599cf7;
