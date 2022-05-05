@@ -1760,20 +1760,9 @@ header .main-nav > li .maga-menu .links li:hover {
   font-size: 18px;
   text-transform: capitalize;
   right: 20px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 90%, 0 100%);
   top: -2px;
   width: 40px;
-}
-
-.pricing .container .box.popular .label::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 20px;
-  -webkit-clip-path: polygon(50% 0, 100% 100%, 0 100%);
-          clip-path: polygon(50% 0, 100% 100%, 0 100%);
-  background: white;
 }
 
 @media (min-width: 1200px) {
