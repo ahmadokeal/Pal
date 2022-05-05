@@ -1,0 +1,20 @@
+[
+  {
+    "owner": "ahmad",
+    "location": "souhag",
+    "skills": ["html", "css", "javascript"],
+    "addresses": {
+      "souhag": "elsheakhyousef",
+      "usa": "newYork",
+      "russia": "mosco"
+    }
+  },
+  {
+    "owner": "okeal",
+    "skills": ["c#", "less", "babel", "vuejs"]
+  },
+  {
+    "owner": "amean",
+    "skills": ["sass", "less", "babel", "vuejs"]
+  }
+]
