@@ -2586,7 +2586,7 @@ footer .container .box .links li a {
 }
 
 footer .container .box .links li a::before {
-  font-family: "Font Awesome 6 Pro";
+  font-family: "Font Awesome 6 Free";
   content: "\f101";
   font-weight: 900;
   color: #fb6a59;
