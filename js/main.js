@@ -5,7 +5,7 @@ let scroll_top = document.querySelector("#galery .container .scroll-top"),
   ),
   timer = setInterval(() => {
     let time =
-        new Date("jul 9, 2022 23:59:59").getTime() - new Date().getTime(),
+        new Date("jul 8, 2022 23:59:59").getTime() - new Date().getTime(),
       days = Math.floor(time / (1000 * 60 * 60 * 24)),
       hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
       minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)),
